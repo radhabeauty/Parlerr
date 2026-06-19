@@ -32,25 +32,30 @@ export function Gallery() {
           </p>
         </div>
 
-        <div className="mt-12 columns-2 gap-3 sm:columns-3 md:columns-4 [&>*]:mb-3">
+        <div className="mt-12 columns-2 gap-4 sm:columns-3 md:columns-4 [&>*]:mb-4">
           {GALLERY.map((img, i) => (
             <motion.button
               key={img.full}
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: (i % 8) * 0.04 }}
+              transition={{ duration: 0.5, delay: (i % 6) * 0.05 }}
               onClick={() => setActive(i)}
-              className="group relative block w-full overflow-hidden rounded-2xl border border-[#e8c48a]/20 break-inside-avoid"
+              className="group relative block w-full overflow-hidden rounded-2xl border border-[#e8c48a]/30 break-inside-avoid bg-[#260510] cv-auto shadow-[0_18px_40px_-22px_rgba(0,0,0,0.7)]"
             >
               <img
                 src={img.thumb}
                 alt={img.alt}
-                loading="lazy"
+                loading={i < 4 ? "eager" : "lazy"}
                 decoding="async"
-                className="w-full transition-transform duration-700 group-hover:scale-110"
+                fetchPriority={i < 2 ? "high" : "auto"}
+                className="cinematic-img w-full transition-transform duration-700 group-hover:scale-[1.08]"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3a0a18]/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3a0a18]/85 via-[#3a0a18]/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-90" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 text-[10px] uppercase tracking-[0.3em] text-[#e8c48a] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                View ✦
+              </div>
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-[#e8c48a]/0 transition-all duration-500 group-hover:ring-[#e8c48a]/50" />
             </motion.button>
           ))}
         </div>
