@@ -9,7 +9,7 @@ export const BRAND = {
   whatsappMsg: "Hi Sister's Beauty Hub! I'd like to book an appointment.",
 } as const;
 
-export const waLink = (msg = BRAND.whatsappMsg) =>
+export const waLink = (msg: string = BRAND.whatsappMsg) =>
   `https://wa.me/${BRAND.primaryPhoneIntl}?text=${encodeURIComponent(msg)}`;
 
 export const telLink = `tel:+${BRAND.primaryPhoneIntl}`;
