@@ -21,36 +21,36 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative grain isolate overflow-hidden bg-maroon-gradient pt-28 pb-24 text-[#fbf6ef] md:pt-36 md:pb-36"
+      className="relative grain isolate overflow-hidden bg-maroon-gradient gold-mist pt-28 pb-28 text-[#fbf6ef] md:pt-36 md:pb-36"
     >
-      {/* ambient orbs */}
+      {/* ambient orbs — lighter blur for perf */}
       <motion.div
         style={{ y: yC }}
-        className="pointer-events-none absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(212,165,116,0.5),transparent_70%)] blur-3xl"
+        className="pointer-events-none absolute -top-32 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(212,165,116,0.45),transparent_70%)] blur-2xl"
       />
       <motion.div
         style={{ y: yB }}
-        className="pointer-events-none absolute -bottom-48 -right-24 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(177,69,94,0.55),transparent_70%)] blur-3xl"
+        className="pointer-events-none absolute -bottom-36 -right-20 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(177,69,94,0.5),transparent_70%)] blur-2xl"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.35)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.4)_100%)]" />
 
-      {/* floating sparkles */}
-      {[...Array(14)].map((_, i) => (
+      {/* floating sparkles — reduced count */}
+      {[...Array(6)].map((_, i) => (
         <motion.span
           key={i}
           aria-hidden
           className="absolute h-1.5 w-1.5 rounded-full bg-[#e8c48a]"
           style={{
-            left: `${(i * 41) % 95 + 2}%`,
-            top: `${(i * 29) % 90 + 5}%`,
-            boxShadow: "0 0 12px rgba(232,196,138,0.8)",
+            left: `${(i * 53) % 90 + 5}%`,
+            top: `${(i * 37) % 85 + 8}%`,
+            boxShadow: "0 0 10px rgba(232,196,138,0.8)",
+            willChange: "transform, opacity",
           }}
           animate={{
-            y: [0, -22, 0],
-            opacity: [0.2, 1, 0.2],
-            scale: [1, 1.4, 1],
+            y: [0, -18, 0],
+            opacity: [0.25, 1, 0.25],
           }}
-          transition={{ duration: 4 + (i % 4), repeat: Infinity, delay: i * 0.25 }}
+          transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: i * 0.4 }}
         />
       ))}
 
@@ -165,13 +165,9 @@ export function Hero() {
 
         {/* photo collage */}
         <div className="relative mx-auto mt-4 h-[480px] w-full max-w-md md:mt-0 md:h-[580px]">
-          {/* gold framing circle */}
-          <motion.div
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="pointer-events-none absolute inset-6 rounded-full border border-dashed border-[#e8c48a]/30"
-          />
+          {/* soft gold halo (static, GPU-friendly) */}
+          <div className="pointer-events-none absolute inset-8 rounded-full border border-[#e8c48a]/25" />
+          <div className="pointer-events-none absolute inset-14 rounded-full bg-[radial-gradient(circle,rgba(232,196,138,0.18),transparent_65%)]" />
           {featured.map((img, i) => {
             const cfg = [
               { left: "2%", top: "0%", r: -6, z: 30, yMotion: yA },
