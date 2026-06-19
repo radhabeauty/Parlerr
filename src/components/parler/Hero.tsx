@@ -190,9 +190,10 @@ export function Hero() {
                   alt={img.alt}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover"
+                  fetchPriority="high"
+                  className="cinematic-img h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3a0a18]/35 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3a0a18]/20 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 top-0 h-px shimmer-gold" />
               </motion.div>
             );
