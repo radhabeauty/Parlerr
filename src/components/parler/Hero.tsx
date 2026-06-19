@@ -83,13 +83,13 @@ export function Hero() {
             <span>Home service available</span>
           </motion.div>
 
-          <h1 className="font-display mt-7 text-[3.5rem] leading-[0.92] tracking-tight sm:text-7xl md:text-[6.5rem]">
+          <h1 className="font-display mt-7 text-[3.5rem] leading-[0.92] tracking-tight sm:text-7xl md:text-[6.5rem] [text-shadow:0_4px_30px_rgba(0,0,0,0.6)]">
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
+                className="inline-block text-[#fbf6ef]"
               >
                 Sister&apos;s
               </motion.span>
@@ -99,7 +99,7 @@ export function Hero() {
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="text-gold-gradient inline-block italic"
+                className="text-gold-gradient inline-block italic drop-shadow-[0_2px_18px_rgba(232,196,138,0.35)]"
               >
                 Beauty Hub
               </motion.span>
@@ -120,7 +120,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#fbf6ef]/80 sm:text-lg">
+          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#fbf6ef]/95 sm:text-lg [text-shadow:0_2px_14px_rgba(0,0,0,0.5)]">
             {words.map((w, i) => (
               <motion.span
                 key={i}
