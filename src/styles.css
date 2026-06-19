@@ -182,5 +182,30 @@
     100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
   }
   .pulse-ring { animation: pulse-ring 2.2s infinite; }
+
+  /* Cinematic image treatment — richer skin tones, deeper blacks */
+  .cinematic-img {
+    filter: saturate(1.08) contrast(1.06) brightness(1.02);
+    image-rendering: -webkit-optimize-contrast;
+  }
+  /* Offscreen perf: skip rendering until near viewport */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
+  /* Cinematic vignette */
+  .vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+  }
+  /* Gold film grain on hero */
+  .gold-mist {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(232,196,138,0.18), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(177,69,94,0.22), transparent 45%);
+  }
 }
 
