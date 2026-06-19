@@ -6,9 +6,12 @@ import { Services } from "@/components/parler/Services";
 import { Gallery } from "@/components/parler/Gallery";
 import { Reels } from "@/components/parler/Reels";
 import { WhyUs } from "@/components/parler/WhyUs";
+import { Testimonials } from "@/components/parler/Testimonials";
 import { Contact } from "@/components/parler/Contact";
 import { Footer } from "@/components/parler/Footer";
 import { WhatsAppFab } from "@/components/parler/WhatsAppFab";
+import { StickyMobileCTA } from "@/components/parler/StickyMobileCTA";
+import { Ornament } from "@/components/parler/Ornament";
 import { BRAND } from "@/components/parler/data";
 
 const jsonLd = {
@@ -65,17 +68,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative bg-[#fbf6ef]">
+    <main className="relative bg-[#fbf6ef] pb-16 md:pb-0">
       <Nav />
       <Hero />
       <Marquee />
+      <div className="bg-[#fbf6ef]">
+        <Ornament />
+      </div>
       <Services />
       <Gallery />
       <Reels />
+      <Testimonials />
       <WhyUs />
       <Contact />
       <Footer />
       <WhatsAppFab />
+      <StickyMobileCTA />
     </main>
   );
 }
