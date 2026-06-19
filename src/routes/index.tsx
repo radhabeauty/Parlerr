@@ -43,6 +43,12 @@ export const Route = createFileRoute("/")({
         content:
           "Premium bridal makeup, party glam, and mehndi artistry in Jabalpur. Home service available. Bridal packages from ₹4000. Call +91 8103994349.",
       },
+      {
+        name: "keywords",
+        content:
+          "bridal makeup Jabalpur, mehndi artist Jabalpur, party makeup Jabalpur, home service bridal makeup, engagement makeup, sangeet makeup, reception makeup",
+      },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Sister's Beauty Hub — Bridal Makeup in Jabalpur" },
       {
         property: "og:description",
