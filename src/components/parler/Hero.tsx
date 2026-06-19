@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Phone, MessageCircle, MapPin, Sparkles, Crown } from "lucide-react";
 import { BRAND, GALLERY, telLink, waLink } from "./data";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const words = ["Bridal", "artistry,", "crafted", "with", "love."];
 
@@ -15,24 +16,35 @@ export function Hero() {
   const yA = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const yB = useTransform(scrollYProgress, [0, 1], [0, -160]);
   const yC = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
 
   return (
     <section
       id="top"
       ref={ref}
-      className="relative grain isolate overflow-hidden bg-maroon-gradient gold-mist pt-28 pb-28 text-[#fbf6ef] md:pt-36 md:pb-36"
+      className="relative grain isolate overflow-hidden bg-[#260510] pt-28 pb-28 text-[#fbf6ef] md:pt-36 md:pb-36"
     >
+      {/* premium 3D background image with parallax */}
+      <motion.div
+        aria-hidden
+        style={{ y: yBg, backgroundImage: `url(${heroBg})` }}
+        className="pointer-events-none absolute -inset-y-20 inset-x-0 bg-cover bg-center opacity-55"
+      />
+      {/* dark scrim for text legibility */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#260510]/85 via-[#3a0a18]/75 to-[#260510]/95" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(0,0,0,0)_0%,rgba(0,0,0,0.55)_100%)]" />
+
       {/* ambient orbs — lighter blur for perf */}
       <motion.div
         style={{ y: yC }}
-        className="pointer-events-none absolute -top-32 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(212,165,116,0.45),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute -top-32 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(212,165,116,0.35),transparent_70%)] blur-2xl"
       />
       <motion.div
         style={{ y: yB }}
-        className="pointer-events-none absolute -bottom-36 -right-20 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(177,69,94,0.5),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute -bottom-36 -right-20 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(177,69,94,0.4),transparent_70%)] blur-2xl"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.4)_100%)]" />
+
 
       {/* floating sparkles — reduced count */}
       {[...Array(6)].map((_, i) => (
@@ -71,13 +83,13 @@ export function Hero() {
             <span>Home service available</span>
           </motion.div>
 
-          <h1 className="font-display mt-7 text-[3.5rem] leading-[0.92] tracking-tight sm:text-7xl md:text-[6.5rem]">
+          <h1 className="font-display mt-7 text-[3.5rem] leading-[0.92] tracking-tight sm:text-7xl md:text-[6.5rem] [text-shadow:0_4px_30px_rgba(0,0,0,0.6)]">
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
+                className="inline-block text-[#fbf6ef]"
               >
                 Sister&apos;s
               </motion.span>
@@ -87,7 +99,7 @@ export function Hero() {
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="text-gold-gradient inline-block italic"
+                className="text-gold-gradient inline-block italic drop-shadow-[0_2px_18px_rgba(232,196,138,0.35)]"
               >
                 Beauty Hub
               </motion.span>
@@ -108,7 +120,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#fbf6ef]/80 sm:text-lg">
+          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#fbf6ef]/95 sm:text-lg [text-shadow:0_2px_14px_rgba(0,0,0,0.5)]">
             {words.map((w, i) => (
               <motion.span
                 key={i}
