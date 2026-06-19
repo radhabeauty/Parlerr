@@ -32,7 +32,7 @@ export function Hero() {
         style={{ y: yB }}
         className="pointer-events-none absolute -bottom-48 -right-24 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,rgba(177,69,94,0.55),transparent_70%)] blur-3xl"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.45)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.35)_100%)]" />
 
       {/* floating sparkles */}
       {[...Array(14)].map((_, i) => (
@@ -137,7 +137,7 @@ export function Hero() {
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#25d366] px-7 py-4 text-sm font-semibold text-white shadow-luxe transition hover:scale-[1.03]"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <MessageCircle className="h-4 w-4" /> WhatsApp 8103994349
+              <MessageCircle className="h-4 w-4" /> WhatsApp Us
             </a>
             <a
               href={telLink}
@@ -153,10 +153,10 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#fbf6ef]/60">
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#fbf6ef]/75">
             <div className="flex items-center gap-1.5">
               <span className="text-base text-[#e8c48a]">★★★★★</span>
-              Trusted by 100+ brides
+              Trusted by 200+ brides
             </div>
             <div className="hidden sm:block">• HD & airbrush makeup</div>
             <div>• {BRAND.address.split(",")[0]}</div>
@@ -164,30 +164,30 @@ export function Hero() {
         </div>
 
         {/* photo collage */}
-        <div className="relative mx-auto h-[460px] w-full max-w-md md:h-[560px]">
+        <div className="relative mx-auto mt-4 h-[480px] w-full max-w-md md:mt-0 md:h-[580px]">
           {/* gold framing circle */}
           <motion.div
             initial={{ rotate: 0 }}
             animate={{ rotate: 360 }}
             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="pointer-events-none absolute inset-0 rounded-full border border-dashed border-[#e8c48a]/30"
+            className="pointer-events-none absolute inset-6 rounded-full border border-dashed border-[#e8c48a]/30"
           />
           {featured.map((img, i) => {
             const cfg = [
-              { x: 10, y: 0, r: -7, z: 30, yMotion: yA },
-              { x: 150, y: 30, r: 6, z: 40, yMotion: yB },
-              { x: -20, y: 200, r: -4, z: 20, yMotion: yC },
-              { x: 160, y: 260, r: 8, z: 10, yMotion: yA },
+              { left: "2%", top: "0%", r: -6, z: 30, yMotion: yA },
+              { left: "48%", top: "6%", r: 6, z: 40, yMotion: yB },
+              { left: "0%", top: "48%", r: -4, z: 20, yMotion: yC },
+              { left: "50%", top: "54%", r: 7, z: 25, yMotion: yA },
             ][i];
             return (
               <motion.div
                 key={img.full}
                 initial={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
-                animate={{ opacity: 1, y: cfg.y, rotate: cfg.r, scale: 1 }}
+                animate={{ opacity: 1, rotate: cfg.r, scale: 1 }}
                 transition={{ duration: 1, delay: 0.3 + i * 0.15, ease: "easeOut" }}
                 whileHover={{ scale: 1.06, rotate: cfg.r * 0.3, zIndex: 50 }}
-                style={{ left: cfg.x, zIndex: cfg.z, y: cfg.yMotion }}
-                className="absolute top-0 h-48 w-36 overflow-hidden rounded-2xl border-2 border-[#e8c48a]/80 shadow-luxe sm:h-60 sm:w-44"
+                style={{ left: cfg.left, top: cfg.top, zIndex: cfg.z, y: cfg.yMotion }}
+                className="absolute h-[45%] w-[48%] overflow-hidden rounded-2xl border-2 border-[#e8c48a]/80 shadow-luxe"
               >
                 <img
                   src={img.thumb}
@@ -196,7 +196,7 @@ export function Hero() {
                   decoding="async"
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3a0a18]/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3a0a18]/35 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 top-0 h-px shimmer-gold" />
               </motion.div>
             );
@@ -207,12 +207,12 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2, type: "spring", stiffness: 200, damping: 14 }}
-            className="absolute -bottom-4 left-0 flex items-center gap-3 rounded-2xl border border-[#e8c48a]/40 bg-[#fbf6ef] px-5 py-3 text-[#3a0a18] shadow-gold"
+            className="absolute -bottom-2 left-2 z-40 flex items-center gap-3 rounded-2xl border border-[#e8c48a]/40 bg-[#fbf6ef] px-4 py-2.5 text-[#3a0a18] shadow-gold"
           >
-            <Crown className="h-6 w-6 text-[#b1455e]" />
+            <Crown className="h-5 w-5 text-[#b1455e]" />
             <div>
-              <div className="font-display text-2xl leading-none">100+</div>
-              <div className="text-[10px] uppercase tracking-widest text-[#3a0a18]/60">
+              <div className="font-display text-xl leading-none">200+</div>
+              <div className="text-[9px] uppercase tracking-widest text-[#3a0a18]/60">
                 Brides styled
               </div>
             </div>
@@ -223,10 +223,10 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.4, type: "spring", stiffness: 200, damping: 14 }}
-            className="absolute right-0 top-2 rounded-2xl bg-gold-gradient px-4 py-3 text-[#3a0a18] shadow-luxe"
+            className="absolute -right-1 top-1 z-40 rounded-2xl bg-gold-gradient px-3.5 py-2.5 text-[#3a0a18] shadow-luxe"
           >
-            <div className="text-[10px] uppercase tracking-widest opacity-80">Starts at</div>
-            <div className="font-display text-2xl leading-none">₹4,000</div>
+            <div className="text-[9px] uppercase tracking-widest opacity-80">Starts at</div>
+            <div className="font-display text-xl leading-none">₹4,000</div>
           </motion.div>
         </div>
       </motion.div>
